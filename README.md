@@ -15,11 +15,12 @@ $ npm install nd-users --save
 ## 使用
 
 ```js
+var UsersModel = require('model/uc/users')
 var user = require('misc/user')
 var Users = require('nd-users')
 
 function makeGranters(uids) {
-  return new Granters($.extend(true, {
+  return new Users($.extend(true, {
     uids: uids,
     source: user.getUsers,
     proxy: new UsersModel()
