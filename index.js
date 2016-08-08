@@ -10,7 +10,7 @@ var Template = require('nd-template')
 var handlehtml = require('nd-handlehtml')
 var AutoComplete = require('nd-autocomplete')
 
-require('theme/default/app/pack/granters.css')
+// require('./users.css')
 
 var Granters = Widget.extend({
   Implements: [Template],

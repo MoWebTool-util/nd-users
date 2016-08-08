@@ -34,3 +34,4 @@ function makeGranters(uids) {
 }
 // use nd-users
 ```
+- 样式可以引入src中的users.css的默认样式
