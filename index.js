@@ -10,7 +10,7 @@ var Template = require('nd-template')
 var handlehtml = require('nd-handlehtml')
 var AutoComplete = require('nd-autocomplete')
 
-// require('./users.css')
+require('theme/default/app/pack/granters.css')
 
 var Granters = Widget.extend({
   Implements: [Template],
@@ -50,7 +50,7 @@ var Granters = Widget.extend({
         .then(function(result) {
           var users = result.items.map(function(user) {
             return {
-              value: user['org_exinfo']['org_user_code'],
+              value: user['user_id'],
               label: that.getUserLabel(user)
             }
           })
@@ -61,10 +61,7 @@ var Granters = Widget.extend({
     this.after('render', function() {
       var autoComplete = that.autoComplete(that.$('[data-role="user-id"]'))
       autoComplete.on('itemSelected', function(data) {
-        var value = this.input.getValue()
-        if (/\D/.test(value)) {
-          value = data.value + ''
-        }
+        var value = data.value + ''
         var flag = that.addUid(value)
         if (!flag) {
           return
@@ -127,7 +124,7 @@ var Granters = Widget.extend({
     uids.splice(uids.indexOf(uid), 1)
     this.set('selectUids', uids)
     this.set('data', this.get('data').filter(function(item) {
-      return item.value !== uid
+      return item.value + '' !== uid
     }))
   },
   addUid: function(uid) {
