@@ -34,4 +34,30 @@ function makeGranters(uids) {
 }
 // use nd-users
 ```
+## 在表单里面使用
+```js
+function makeGranters(uids) {
+  return new FormExtra($.extend(true, {
+    fields: [
+      {
+        name: 'uids',
+        attrs: {
+          'x-type': 'users',
+          required: 'required',
+          uids: JSON.stringify(uids)
+        }
+      }
+    ],
+    pluginCfg: {
+      'Users': [function(){
+        this.setOptions('config',{
+          proxy: new UsersModel(),
+          source: user.getUsers
+        })
+      }]
+    }
+  }, plugin.getOptions('view')))
+}
+
+```
 - 样式可以引入src中的users.css的默认样式
