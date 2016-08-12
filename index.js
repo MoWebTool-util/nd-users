@@ -70,7 +70,7 @@ var Granters = Widget.extend({
     Granters.superclass.setup.call(this)
     var that = this
     var uids = this.get('uids')
-    if (uids.length) {
+    if (uids.length && this.get('proxy')) {
       var userIds = uids.map(function(uid) {
         return {
           'user_id': uid
